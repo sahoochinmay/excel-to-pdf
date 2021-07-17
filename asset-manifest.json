@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/excel-to-pdf/static/css/main.a617e044.chunk.css",
+    "main.js": "/excel-to-pdf/static/js/main.80457245.chunk.js",
+    "main.js.map": "/excel-to-pdf/static/js/main.80457245.chunk.js.map",
+    "runtime-main.js": "/excel-to-pdf/static/js/runtime-main.2b97946f.js",
+    "runtime-main.js.map": "/excel-to-pdf/static/js/runtime-main.2b97946f.js.map",
+    "static/js/2.092492e4.chunk.js": "/excel-to-pdf/static/js/2.092492e4.chunk.js",
+    "static/js/2.092492e4.chunk.js.map": "/excel-to-pdf/static/js/2.092492e4.chunk.js.map",
+    "static/js/3.23a5d6b5.chunk.js": "/excel-to-pdf/static/js/3.23a5d6b5.chunk.js",
+    "static/js/3.23a5d6b5.chunk.js.map": "/excel-to-pdf/static/js/3.23a5d6b5.chunk.js.map",
+    "index.html": "/excel-to-pdf/index.html",
+    "service-worker.js": "/excel-to-pdf/service-worker.js",
+    "service-worker.js.map": "/excel-to-pdf/service-worker.js.map",
+    "static/css/main.a617e044.chunk.css.map": "/excel-to-pdf/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.092492e4.chunk.js.LICENSE.txt": "/excel-to-pdf/static/js/2.092492e4.chunk.js.LICENSE.txt",
+    "static/media/logo.103b5fa1.svg": "/excel-to-pdf/static/media/logo.103b5fa1.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2b97946f.js",
+    "static/js/2.092492e4.chunk.js",
+    "static/css/main.a617e044.chunk.css",
+    "static/js/main.80457245.chunk.js"
+  ]
+}

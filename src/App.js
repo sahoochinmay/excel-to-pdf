@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
 
-function App() {
+const App = () => {
+  const [excelFile ,setExcelFile] = useState()
+  console.log(excelFile)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Let's start excel-to-pdf
-        </a>
-      </header>
+    <div>
+      <input 
+      type="file" 
+      accept=".xlsx"
+      onChange={(e) => setExcelFile(e.target.files[0])}
+      />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -4,6 +4,12 @@
   "private": true,
   "homepage": "http://sahoochinmay.github.io/excel-to-pdf",
   "dependencies": {
+    "@progress/kendo-data-query": "^1.5.5",
+    "@progress/kendo-drawing": "^1.10.1",
+    "@progress/kendo-licensing": "^1.2.0",
+    "@progress/kendo-react-animation": "^4.7.0",
+    "@progress/kendo-react-grid": "^4.7.0",
+    "@progress/kendo-react-pdf": "^4.7.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

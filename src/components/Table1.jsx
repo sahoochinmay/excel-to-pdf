@@ -1,44 +1,9 @@
-import React , {useRef} from "react";
+import React, { useRef } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
-// import {
-//   Grid,
-//   GridColumn as Column,
-//   GridToolbar,
-// } from "@progress/kendo-react-grid";
-// import {} from '@progress/kendo-react-grid'
+import { useReactToPrint } from "react-to-print";
 
 const Table1 = ({ heading, selectedItems, setSelectedItems, handleShift }) => {
-  const pdfExportComponent = useRef()
-  let gridPDFExport;
-  const exportPDF = () => {
-    if (gridPDFExport) {
-      gridPDFExport.save();
-    }
-  };
-  // const grid = (
-  //   <Grid
-  //     data={selectedItems}
-  //     // style={{
-  //     //   height: "445px",
-  //     // }}
-  //   >
-  //     {/* <GridToolbar>
-  //       <button
-  //         title="Export PDF"
-  //         className="k-button k-primary"
-  //         onClick={exportPDF}
-  //       >
-  //         Export PDF
-  //       </button>
-  //     </GridToolbar> */}
-  //     {
-  //       heading.map((h,idx) =>{
-  //         return <Column field={h} title={h} width="100px" />
-  //       })
-  //     }
-  //   </Grid>
-  // );
+  const componentToPrintRef = useRef();
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
     const items = Array.from(selectedItems);
@@ -46,12 +11,11 @@ const Table1 = ({ heading, selectedItems, setSelectedItems, handleShift }) => {
     items.splice(result.destination.index, 0, reorderedItem);
     setSelectedItems(items);
   };
-  const  handleExportWithComponent  = (event) => {
-    pdfExportComponent.current.save();
-    // savePDF(contentArea.current, { paperSize:  "A4" });
-}
+  const handleExport = useReactToPrint({
+    content: () => componentToPrintRef.current,
+  });
   return (
-    <div className="table_box" >
+    <div className="table_box">
       <h2
         style={{
           textAlign: "center",
@@ -59,14 +23,15 @@ const Table1 = ({ heading, selectedItems, setSelectedItems, handleShift }) => {
       >
         Table - I
       </h2>
-      <PDFExport  ref={pdfExportComponent} paperSize="A4" margin="1cm"  >
       <table className="table">
         <thead>
           <tr>
             {heading.map((h) => (
-              <th scope="col" className="table_heading" >{h}</th>
+              <th scope="col" className="table_heading">
+                {h}
+              </th>
             ))}
-            <th className="table_heading" >&nbsp;</th>
+            <th className="table_heading">&nbsp;</th>
           </tr>
         </thead>
         <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -91,17 +56,21 @@ const Table1 = ({ heading, selectedItems, setSelectedItems, handleShift }) => {
                           {...provided.dragHandleProps}
                         >
                           {heading.map((h) => {
-                            return <td align="center" className="table_data">{ob[h]}</td>;
+                            return (
+                              <td align="center" className="table_data">
+                                {ob[h]}
+                              </td>
+                            );
                           })}
                           <td
                             style={{
                               cursor: "pointer",
                             }}
-                            className='table_data'
+                            className="table_data"
                             align="center"
                             onClick={() => handleShift(0, index)}
                           >
-                            ❎
+                            🔻
                           </td>
                         </tr>
                       )}
@@ -114,11 +83,46 @@ const Table1 = ({ heading, selectedItems, setSelectedItems, handleShift }) => {
           </Droppable>
         </DragDropContext>
       </table>
-      </PDFExport>
-      {
-          selectedItems.length > 0 ?
-          <button className="export_button" onClick={handleExportWithComponent} >Export To PDF</button> : null
-      }
+      {selectedItems.length > 0 ? (
+        <button className="export_button" onClick={handleExport}>
+          Print PDF
+        </button>
+      ) : null}
+      {/* NOTE: Hidden component to print */}
+      <section
+        style={{
+          height: "0px",
+          width: "0px",
+          overflow: "hidden",
+        }}
+      >
+        <table className="table" ref={componentToPrintRef}>
+          <thead>
+            <tr>
+              {heading.map((h) => (
+                <th scope="col" className="table_heading">
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {selectedItems.map((ob, index) => {
+              return (
+                <tr>
+                  {heading.map((h) => {
+                    return (
+                      <td align="center" className="table_data">
+                        {ob[h]}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </section>
     </div>
   );
 };

@@ -109,7 +109,7 @@ const Table1 = ({ heading, selectedItems, setSelectedItems, handleShift }) => {
           <tbody>
             {selectedItems.map((ob, index) => {
               return (
-                <tr>
+                <tr  >
                   {heading.map((h) => {
                     return (
                       <td align="center" className="table_data">

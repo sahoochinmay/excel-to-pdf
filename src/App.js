@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useRef } from "react";
 import * as XLSX from "xlsx";
 import "./App.css";
 import Table1 from "./components/Table1";
 import Table2 from "./components/Table2";
 
 const App = () => {
+  const fileUploadRef = useRef(null);
   const [heading, setHeading] = useState([]);
   const [items, setItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
-  console.log(items);
+  const [data, setData] = useState(null)
   useEffect(() => {
     if (items.length !== 0) {
       setHeading(Object.keys(items[0]));
@@ -58,20 +59,37 @@ const App = () => {
     }
   };
   return (
-    <div>
+    <div className="main"  >
       {items.length === 0 && selectedItems.length === 0 ? (
         <div className="input_container">
-          <h1>Please Upload only .xlsx file</h1>
-          <div className="input_box" >
-            <input
-              type="file"
-              onChange={(e) => {
-                const file = e.target.files[0];
-                console.log(file);
-                readExcel(file);
-              }}
-            />
-          </div>
+          <div className="input_box">
+              <h2>UPLOAD FILE</h2>
+              <h3 className="text-center">
+                Upload a .xlsx file that you want to add student from
+              </h3>
+              <div>
+                <input
+                  type="file"
+                  ref={fileUploadRef}
+                  onChange={(e) => {
+                    setData(e.target.files[0])
+                    readExcel(e.target.files[0])
+                  }}
+                  accept=".xlsx"
+                  style={{
+                    visibility:"hidden"
+                  }}
+                />
+                <div className="browse-files">
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => fileUploadRef.current.click()}
+                  >
+                    Browse Files
+                  </button>
+                </div>
+              </div>
+        </div>
         </div>
       ) : (
         <div className="table_container">

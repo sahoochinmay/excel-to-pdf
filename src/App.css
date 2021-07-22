@@ -1,3 +1,9 @@
+
+
+.main{
+  
+  background: linear-gradient(-234deg, #449BFC 55%, #CBDAEF 45%);
+}
 .input_container {
   width: 100%;
   height: 100vh;
@@ -6,14 +12,16 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  
 }
 .input_container .input_box {
   padding: 50px;
-  border: 1px solid blueviolet;
+  border: 1px dashed blueviolet;
   border-radius: 15px;
+  background: white;
 }
 .table_container {
-  margin-top: 100px;
+  padding-top: 50px;
   padding-bottom: 100px;
   width: 100%;
   display: flex;
@@ -22,6 +30,7 @@
   align-items: center;
 }
 .table_box {
+  background: white;
   border: 1px solid gray;
   border-radius: 20px;
   box-shadow: 0px -1px 27px -1px rgba(0, 0, 0, 0.75);
@@ -29,15 +38,19 @@
   -moz-box-shadow: 0px -1px 27px -1px rgba(0, 0, 0, 0.75);
   padding: 20px;
   padding-bottom: 50px;
+  max-width: 80vw;
+  overflow-x: auto;
 }
 .table {
   /* width: 500px; */
 }
 .table .table_heading {
   min-width: 100px;
+  max-width: 100px;
   padding: 10px;
 }
 .table .table_data {
+  max-width: 200px;
   min-width: 100px;
   padding: 10px;
   border-bottom: 1px solid gray;

@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin: 0 ;
   padding: 0;
   box-sizing: border-box;
 }
@@ -7,4 +7,20 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+::-webkit-scrollbar {
+  height: 8px;              /* height of horizontal scrollbar ← You're missing this */
+  width: 8px;               /* width of vertical scrollbar */
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: #eeeeee;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #b0b0b0;
 }

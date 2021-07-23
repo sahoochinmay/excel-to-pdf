@@ -65,7 +65,7 @@ const App = () => {
           <div className="input_box">
               <h2>UPLOAD FILE</h2>
               <h3 className="text-center">
-                Upload a .xlsx file that you want to add student from
+                Upload a .xlsx file 
               </h3>
               <div>
                 <input

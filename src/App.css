@@ -19,6 +19,7 @@
   border: 1px dashed blueviolet;
   border-radius: 15px;
   background: white;
+  min-width: 400px;
 }
 .table_container {
   padding-top: 50px;

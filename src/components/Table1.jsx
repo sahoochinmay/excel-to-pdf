@@ -45,8 +45,8 @@ const Table1 = ({ heading, selectedItems, setSelectedItems, handleShift }) => {
                 {selectedItems.map((ob, index) => {
                   return (
                     <Draggable
-                      key={ob["Name"]}
-                      draggableId={ob["Name"]}
+                      key={`${ob[heading[0]]+index}`}
+                      draggableId={`${ob[heading[0]]+index}`}
                       index={index}
                     >
                       {(provided) => (

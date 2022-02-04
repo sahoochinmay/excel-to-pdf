@@ -45,8 +45,8 @@ const Table1 = ({ heading, selectedItems, setSelectedItems, handleShift }) => {
                 {selectedItems.map((ob, index) => {
                   return (
                     <Draggable
-                      key={`${ob[heading[0]]+index}`}
-                      draggableId={`${ob[heading[0]]+index}`}
+                      key={`${ob[heading[0]] + index}`}
+                      draggableId={`${ob[heading[0]] + index}`}
                       index={index}
                     >
                       {(provided) => (
@@ -99,8 +99,20 @@ const Table1 = ({ heading, selectedItems, setSelectedItems, handleShift }) => {
         <table className="table" ref={componentToPrintRef}>
           <thead>
             <tr>
-              {heading.map((h) => (
-                <th scope="col" className="table_heading">
+              <th
+                align="left"
+                style={{
+                  width: "30px",
+                }}
+              >
+                SL No.
+              </th>
+              {heading.map((h, index) => (
+                <th
+                  scope="col"
+                  align={index === 0 ? "left" : "center"}
+                  className="table_heading"
+                >
                   {h}
                 </th>
               ))}
@@ -109,10 +121,21 @@ const Table1 = ({ heading, selectedItems, setSelectedItems, handleShift }) => {
           <tbody>
             {selectedItems.map((ob, index) => {
               return (
-                <tr  >
-                  {heading.map((h) => {
+                <tr>
+                  <td
+                    style={{
+                      padding: "10px 10px 10px 5px",
+                      borderBottom: "1px solid gray",
+                    }}
+                  >
+                    {index + 1}
+                  </td>
+                  {heading.map((h, index) => {
                     return (
-                      <td align="center" className="table_data">
+                      <td
+                        align={index === 0 ? "left" : "center"}
+                        className="table_data"
+                      >
                         {ob[h]}
                       </td>
                     );

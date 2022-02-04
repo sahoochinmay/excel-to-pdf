@@ -44,6 +44,7 @@
 }
 .table {
   /* width: 500px; */
+  padding: 5px;
 }
 .table .table_heading {
   min-width: 100px;
